@@ -197,36 +197,21 @@ fim
 ;
 
 bloco soma_vai_um 1
-	
 	1 = -- * i 5
-	1 0 -- * i 10
-    1 1 -- * i 10
-    1 2 -- * i 10
-    1 3 -- * i 10
-    1 4 -- * i 10
-    1 5 -- * i 10
-    1 6 -- * i 10
-    1 7 -- * i 10
-    1 8 -- * i 10
-    1 9 -- * i 10
+	1 0 -- 1 e 1
+    1 1 -- 2 e 1
+    1 2 -- 3 e 1
+    1 3 -- 4 e 1
+    1 4 -- 5 e 1
+    1 5 -- 6 e 1
+    1 6 -- 7 e 1
+    1 7 -- 8 e 1
+    1 8 -- 9 e 1
+    1 9 -- 0 e 1
 	1 * -- * e 1
+    5 move_frente 10
+    10 * -- 1 i retorne
 
-	5 move_frente 6
-	6 * -- 1 i retorne
-
-	10 0 -- U i retorne
-    10 1 -- D i retorne
-    10 2 -- T i retorne
-    10 3 -- Q i retorne
-    10 4 -- C i retorne
-    10 5 -- S i retorne
-    10 6 -- L i retorne
-    10 7 -- O i retorne
-    10 8 -- N i retorne
-    10 9 -- Z i 11
-    11 soma_vai_um 12
-
-    12 * -- * i retorne
 fim
 
 bloco procura_algarismo_vai_um 1
@@ -253,65 +238,85 @@ bloco move_frente 1
     5 * -- * i 10
     ;Caso for copiar o 0
     10 Z -- * i 15
-    10 0 -- * i 15
+    10 0 -- * i 16
     ;Caso for copiar o 1
     10 U -- * i 20
-    10 1 -- * i 20
+    10 1 -- * i 21
     ;Caso for copiar o 2
     10 D -- * i 25
-    10 2 -- * i 25
+    10 2 -- * i 26
     ;Caso for copiar o 3
     10 T -- * i 30
-    10 3 -- * i 30
+    10 3 -- * i 31
     ;Caso for copiar o 4
     10 Q -- * i 35
-    10 4 -- * i 35
+    10 4 -- * i 36
     ;Caso for copiar o 5
     10 C -- * i 40
-    10 5 -- * i 40
+    10 5 -- * i 41
     ;Caso for copiar o 6
     10 S -- * i 45
-    10 6 -- * i 45
+    10 6 -- * i 46
     ;Caso for copiar o 7
     10 L -- * i 50
-    10 7 -- * i 50
+    10 7 -- * i 51
     ;Caso for copiar o 8
     10 O -- * i 55
-    10 8 -- * i 55
+    10 8 -- * i 56
     ;Caso for copiar o 9
     10 N -- * i 60
-    10 9 -- * i 60
+    10 9 -- * i 61
     ;Insere Marca para facilitar a copia
     15 * -- X d 65
+    16 * -- X d 66
     ;Realiza copia do 0
     65 * -- Z i 120
+    66 * -- 0 i 120
     ;Repete procedimento para todos os demais numeros (IGUAL O 0)
     20 * -- X d 70
+    21 * -- X d 71
     70 * -- U i 120
+    71 * -- 1 i 120
     
     25 * -- X d 75
+    26 * -- X d 76
     75 * -- D i 120
+    76 * -- 2 i 120
 
     30 * -- X d 80
+    31 * -- X d 81
     80 * -- T i 120
+    81 * -- 3 i 120
 
     35 * -- X d 85
+    36 * -- X d 86
     85 * -- Q i 120
+    86 * -- 4 i 120
 
     40 * -- X d 90
+    41 * -- X d 91
     90 * -- C i 120
+    91 * -- 5 i 120
 
     45 * -- X d 95
+    46 * -- X d 96
     95 * -- S i 120
+    96 * -- 6 i 120
 
     50 * -- X d 100
+    51 * -- X d 101
     100 * -- L i 120
+    101 * -- 7 i 120
 
     55 * -- X d 105
+    56 * -- X d 106
     105 * -- O i 120
+    106 * -- 8 i 120
 
     60 * -- X d 110
+    61 * -- X d 111
     110 * -- N i 120
+    111 * -- 9 i 120
     
     120 X -- _ e 5
     120 * -- * e 120
