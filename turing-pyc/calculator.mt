@@ -198,15 +198,15 @@ fim
 
 bloco soma_vai_um 1
 	1 = -- * i 5
-	1 0 -- 1 e 1
-    1 1 -- 2 e 1
-    1 2 -- 3 e 1
-    1 3 -- 4 e 1
-    1 4 -- 5 e 1
-    1 5 -- 6 e 1
-    1 6 -- 7 e 1
-    1 7 -- 8 e 1
-    1 8 -- 9 e 1
+	1 0 -- 1 e retorne
+    1 1 -- 2 e retorne
+    1 2 -- 3 e retorne
+    1 3 -- 4 e retorne
+    1 4 -- 5 e retorne
+    1 5 -- 6 e retorne
+    1 6 -- 7 e retorne
+    1 7 -- 8 e retorne
+    1 8 -- 9 e retorne
     1 9 -- 0 e 1
 	1 * -- * e 1
     5 move_frente 10
