@@ -10,7 +10,7 @@ bloco main 1
     5 - -- * i 15
     5 x -- * i 20
     10 soma 30
-    15 sub 30
+    15 subtracao 30
     20 mult 30
 
     ; Transforma tudo para numero
@@ -430,4 +430,316 @@ bloco transforma_para_numero 1
     2 N -- 9 d 2
     2 _ -- * i retorne
     2 * -- * d 2
+fim
+
+;############################ SUBNELSON ######################################################################
+
+bloco subtracao 1
+    1 move_inicio 2
+    2 insere_depois_igual 3
+    3 move_ate_igual 4
+    4 proximo_algarismo 5
+    5 copiar 6
+    6 transforma_numero_letra 7
+    7 move_fim 8
+    8 subtrai_numero 10
+    10 proximo_algarismo 11
+    11 - -- * i retorne
+    11 0 -- * i 5
+    11 1 -- * i 5
+    11 2 -- * i 5
+    11 3 -- * i 5
+    11 4 -- * i 5
+    11 5 -- * i 5
+    11 6 -- * i 5
+    11 7 -- * i 5
+    11 8 -- * i 5
+    11 9 -- * i 5
+fim
+
+bloco subtrai_numero 1
+    ;verifica se na fita principal tem letra (indica que numero ja foi subtraido)
+    1 Z -- * e 1
+    1 U -- * e 1
+    1 D -- * e 1
+    1 T -- * e 1
+    1 Q -- * e 1
+    1 C -- * e 1
+    1 S -- * e 1
+    1 L -- * e 1
+    1 O -- * e 1
+    1 N -- * e 1
+    ;verifica se na fita principal tem o = indica que deve ser movido para frente
+    1 = -- * i 2
+    ;caso seja um valor a ser subtraido simplesmente subtrai
+    1 * -- * i 5
+    ;caso necessario mover os numeros para frente
+    2 move_frente 4
+    ;troca espaco em branco pelo numero 0 e executa subtracao
+    4 _ -- 0 i 5
+    ; verifica o que tem na segunda fita, para indicar como será feita a subtracao
+    5 [0] -- * i 10
+    5 [1] -- * i 20
+    5 [2] -- * i 30
+    5 [3] -- * i 40
+    5 [4] -- * i 50
+    5 [5] -- * i 60
+    5 [6] -- * i 70
+    5 [7] -- * i 80
+    5 [8] -- * i 90
+    5 [9] -- * i 100
+    ;se tiver 0 na segunda fita
+    10 0 -- 0 i 150
+    10 1 -- 1 i 150
+    10 2 -- 2 i 150
+    10 3 -- 3 i 150
+    10 4 -- 4 i 150
+    10 5 -- 5 i 150
+    10 6 -- 6 i 150
+    10 7 -- 7 i 150
+    10 8 -- 8 i 150
+    10 9 -- 9 i 150
+    ;se tiver 1 na segunda fita
+    20 0 -- * i 200
+    20 1 -- 0 i 150
+    20 2 -- 1 i 150
+    20 3 -- 2 i 150
+    20 4 -- 3 i 150
+    20 5 -- 4 i 150
+    20 6 -- 5 i 150
+    20 7 -- 6 i 150
+    20 8 -- 7 i 150
+    20 9 -- 8 i 150
+    ;se tiver 2 na segunda fita
+    30 0 -- * i 200
+    30 1 -- * i 200
+    30 2 -- 0 i 150
+    30 3 -- 1 i 150
+    30 4 -- 2 i 150
+    30 5 -- 3 i 150
+    30 6 -- 4 i 150
+    30 7 -- 5 i 150
+    30 8 -- 6 i 150
+    30 9 -- 7 i 150
+    ;se tiver 3 na segunda fita
+    40 0 -- * i 200
+    40 1 -- * i 200
+    40 2 -- * i 200
+    40 3 -- 0 i 150
+    40 4 -- 1 i 150
+    40 5 -- 2 i 150
+    40 6 -- 3 i 150
+    40 7 -- 4 i 150
+    40 8 -- 5 i 150
+    40 9 -- 6 i 150
+    ;se tiver 4 na segunda fita
+    50 0 -- * i 200
+    50 1 -- * i 200
+    50 2 -- * i 200
+    50 3 -- * i 200
+    50 4 -- 0 i 150
+    50 5 -- 1 i 150
+    50 6 -- 2 i 150
+    50 7 -- 3 i 150
+    50 8 -- 4 i 150
+    50 9 -- 5 i 150
+    ;se tiver 5 na segunda fita
+    60 0 -- * i 200
+    60 1 -- * i 200
+    60 2 -- * i 200
+    60 3 -- * i 200
+    60 4 -- * i 200
+    60 5 -- 0 i 150
+    60 6 -- 1 i 150
+    60 7 -- 2 i 150
+    60 8 -- 3 i 150
+    60 9 -- 4 i 150
+    ;se tiver 6 na segunda fita
+    70 0 -- * i 200
+    70 1 -- * i 200
+    70 2 -- * i 200
+    70 3 -- * i 200
+    70 4 -- * i 200
+    70 5 -- * i 200
+    70 6 -- 0 i 150
+    70 7 -- 1 i 150
+    70 8 -- 2 i 150
+    70 9 -- 3 i 150
+    ; se tiver 7 na segunda fita
+    80 0 -- * i 200
+    80 1 -- * i 200
+    80 2 -- * i 200
+    80 3 -- * i 200
+    80 4 -- * i 200
+    80 5 -- * i 200
+    80 6 -- * i 200
+    80 7 -- 0 i 150
+    80 8 -- 1 i 150
+    80 9 -- 2 i 150
+    ; se tiver 8 na segunda fita
+    90 0 -- * i 200
+    90 1 -- * i 200
+    90 2 -- * i 200
+    90 3 -- * i 200
+    90 4 -- * i 200
+    90 5 -- * i 200
+    90 6 -- * i 200
+    90 7 -- * i 200
+    90 8 -- 0 i 150
+    90 9 -- 1 i 150
+    ; se tiver 9 na segunda fita
+    100 0 -- * i 200
+    100 1 -- * i 200
+    100 2 -- * i 200
+    100 3 -- * i 200
+    100 4 -- * i 200
+    100 5 -- * i 200
+    100 6 -- * i 200
+    100 7 -- * i 200
+    100 8 -- * i 200
+    100 9 -- 0 i 150
+
+    150 transforma_numero_letra 151
+    151 * -- * i retorne
+
+    ; trata o vai um a partir do 200
+    200 sub_pede_emprestado 201
+    201 transforma_numero_letra 202
+    202 * -- * i retorne
+fim
+
+bloco sub_pede_emprestado 1
+
+    1 = -- * i retorne
+    1 0 -- z e 20
+    1 1 -- u e 20
+    1 2 -- d e 20
+    1 3 -- t e 20
+    1 4 -- q e 20
+    1 5 -- c e 20
+    1 6 -- s e 20
+    1 7 -- l e 20
+    1 8 -- o e 20
+    1 9 -- n e 20
+    1 * -- * e 1
+
+    20 0 -- * e 20
+
+    20 = -- * i 5
+    20 1 -- 0 d 25
+    20 2 -- 1 d 25
+    20 3 -- 2 d 25
+    20 4 -- 3 d 25
+    20 5 -- 4 d 25
+    20 6 -- 5 d 25
+    20 7 -- 6 d 25
+    20 8 -- 7 d 25
+    20 9 -- 8 d 25
+
+    25 procura_minusculo 29
+
+    29 [0] -- * i 30
+    29 [1] -- * i 31
+    29 [2] -- * i 32
+    29 [3] -- * i 33
+    29 [4] -- * i 34
+    29 [5] -- * i 35
+    29 [6] -- * i 36
+    29 [7] -- * i 37
+    29 [8] -- * i 38
+    29 [9] -- * i 39
+
+    ;se tiver 1 na segunda fita
+    31 z -- 9 i 150
+    
+    ;se tiver 2 na segunda fita
+    32 z -- 8 i 150
+    32 u -- 9 i 150
+
+    ;se tiver 3 na segunda fita
+    33 z -- 7 i 150
+    33 u -- 8 i 150
+    33 d -- 9 i 150
+
+    ;se tiver 4 na segunda fita
+    34 z -- 6 i 150
+    34 u -- 7 i 150
+    34 d -- 8 i 150
+    34 t -- 9 i 150
+
+    ;se tiver 5 na segunda fita
+    35 z -- 5 i 150
+    35 u -- 6 i 150
+    35 d -- 7 i 150
+    35 t -- 8 i 150
+    35 q -- 9 i 150
+
+    ;se tiver 6 na segunda fita
+    36 z -- 4 i 150
+    36 u -- 5 i 150
+    36 d -- 6 i 150
+    36 t -- 7 i 150
+    36 q -- 8 i 150
+    36 c -- 9 i 150
+
+    ;se tiver 7 na segunda fita
+    37 z -- 3 i 150
+    37 u -- 4 i 150
+    37 d -- 5 i 150
+    37 t -- 6 i 150
+    37 q -- 7 i 150
+    37 c -- 8 i 150
+    37 s -- 9 i 150
+
+    ;se tiver 8 na segunda fita
+    38 z -- 2 i 150
+    38 u -- 3 i 150
+    38 d -- 4 i 150
+    38 t -- 5 i 150
+    38 q -- 6 i 150
+    38 c -- 7 i 150
+    38 s -- 8 i 150
+    38 l -- 9 i 150
+
+    ;se tiver 9 na segunda fita
+    39 z -- 1 i 150
+    39 u -- 2 i 150
+    39 d -- 3 i 150
+    39 t -- 4 i 150
+    39 q -- 5 i 150
+    39 c -- 6 i 150
+    39 s -- 7 i 150
+    39 l -- 8 i 150
+    39 o -- 9 i 150
+
+    150 * -- * i retorne
+fim
+
+bloco procura_minusculo 1
+    
+    1 z -- * i retorne
+    1 u -- * i retorne
+    1 d -- * i retorne
+    1 t -- * i retorne
+    1 q -- * i retorne
+    1 c -- * i retorne
+    1 s -- * i retorne
+    1 l -- * i retorne
+    1 o -- * i retorne
+    1 n -- * i retorne
+    1 0 -- 9 d 1
+    1 * -- * d 1
+fim
+
+bloco transforma_letra_minus_numero 1
+    1 z -- 0 i retorne
+    1 u -- 1 i retorne
+    1 d -- 2 i retorne
+    1 t -- 3 i retorne
+    1 q -- 4 i retorne
+    1 c -- 5 i retorne
+    1 s -- 6 i retorne
+    1 l -- 7 i retorne
+    1 o -- 8 i retorne
+    1 n -- 9 i retorne
 fim
