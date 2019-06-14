@@ -10,8 +10,15 @@ bloco main 1
     5 - -- * i 15
     5 x -- * i 20
     10 soma 30
-    15 subtracao 30
+    15 identifica_maior 17
+    17 insere_primeiro_numero 25
+    25 move_inicio_sub 18
+
+    18 subtracao 19
     20 mult 30
+
+    19 move_frente 21
+    21 _ -- - i 30
 
     ; Transforma tudo para numero
     30 transforma_para_numero 31
@@ -352,6 +359,12 @@ bloco move_inicio 1
     1 * -- * e 1
 fim
 
+bloco move_inicio_sub 1
+    1 I -- * d retorne
+    1 _ -- * d retorne
+    1 * -- * e 1
+fim
+
 bloco move_fim 1
     1 _ -- * e retorne
     1 * -- * d 1
@@ -435,8 +448,8 @@ fim
 ;############################ SUBNELSON ######################################################################
 
 bloco subtracao 1
-    1 move_inicio 2
-    2 insere_depois_igual 3
+    1 move_inicio_sub 2
+    2 insere_depois_igual_sub 3
     3 move_ate_igual 4
     4 proximo_algarismo 5
     5 copiar 6
@@ -742,4 +755,166 @@ bloco transforma_letra_minus_numero 1
     1 l -- 7 i retorne
     1 o -- 8 i retorne
     1 n -- 9 i retorne
+fim
+
+bloco proximo_algarismo_direita 1
+    1 = -- * i retorne
+    1 0 -- * i retorne
+    1 1 -- * i retorne
+    1 2 -- * i retorne
+    1 3 -- * i retorne
+    1 4 -- * i retorne
+    1 5 -- * i retorne
+    1 6 -- * i retorne
+    1 7 -- * i retorne
+    1 8 -- * i retorne
+    1 9 -- * i retorne
+    1 H -- * i retorne
+    1 * -- * d 1
+fim
+
+bloco identifica_maior 1
+
+    1 move_inicio_sub 2
+    2 insere_depois_igual 3
+
+    3 move_fim 4
+    4 * -- * d 5
+    5 _ -- H i 6
+
+    6 - -- * i 7
+    6 * -- * e 6
+
+    7 proximo_algarismo_direita 8
+    8 copiar 9
+
+    9 0 -- Z i 10
+    9 1 -- U i 10
+    9 2 -- D i 10
+    9 3 -- T i 10
+    9 4 -- Q i 10
+    9 5 -- C i 10
+    9 6 -- S i 10
+    9 7 -- L i 10
+    9 8 -- O i 10
+    9 9 -- N i 10
+
+    10 = -- * d 11
+    10 * -- * d 10
+
+    11 proximo_algarismo_direita 12
+    12 H -- * i 20 ; o segundo numero eh maior
+
+    12 [0] -- Z i 15
+    12 [1] -- U i 15
+    12 [2] -- D i 15
+    12 [3] -- T i 15
+    12 [4] -- Q i 15
+    12 [5] -- C i 15
+    12 [6] -- S i 15
+    12 [7] -- L i 15
+    12 [8] -- O i 15
+    12 [9] -- N i 15
+
+    15 * -- * i 6
+
+    ; sobreescrevendo o H
+    20 [0] -- Z i 21
+    20 [1] -- U i 21
+    20 [2] -- D i 21
+    20 [3] -- T i 21
+    20 [4] -- Q i 21
+    20 [5] -- C i 21
+    20 [6] -- S i 21
+    20 [7] -- L i 21
+    20 [8] -- O i 21
+    20 [9] -- N i 21
+
+    21 proximo_algarismo 22
+    22 - -- * i retorne
+    22 * -- * i 23
+
+    23 copiar 25
+
+    25 0 -- Z i 30
+    25 1 -- U i 30
+    25 2 -- D i 30
+    25 3 -- T i 30
+    25 4 -- Q i 30
+    25 5 -- C i 30
+    25 6 -- S i 30
+    25 7 -- L i 30
+    25 8 -- O i 30
+    25 9 -- N i 30
+
+    ; cria um espaco vazio
+    30 move_fim 31
+    31 * -- * d 32
+
+    32 [0] -- Z i 35
+    32 [1] -- U i 35
+    32 [2] -- D i 35
+    32 [3] -- T i 35
+    32 [4] -- Q i 35
+    32 [5] -- C i 35
+    32 [6] -- S i 35
+    32 [7] -- L i 35
+    32 [8] -- O i 35
+    32 [9] -- N i 35
+
+    35 * -- * i 21
+fim
+
+bloco insere_primeiro_numero 1
+    
+    ; Transforma tudo para numero
+    1 transforma_para_numero 2
+
+    2 * -- * e 100
+    
+    100 move_inicio 3
+    3 = -- I i 5
+    3 * -- * d 3
+
+    5 move_fim 10
+    10 * -- * d 11
+    11 _ -- = i 15
+
+    15 move_inicio 16
+    16 insere_depois_igual 20
+
+    ; Troca o = por -
+    20 = -- - i 25
+    20 * -- * d 20
+
+    ; Insere o = no final
+    25 move_fim 26
+    26 * -- * d 27
+    27 _ -- = i 30
+
+    30 * -- * i retorne
+
+fim
+
+bloco insere_depois_igual_sub 1
+    1 copiar 5
+    5 [0] -- Z i 10
+    5 [1] -- U i 10
+    5 [2] -- D i 10
+    5 [3] -- T i 10
+    5 [4] -- Q i 10
+    5 [5] -- C i 10
+    5 [6] -- S i 10
+    5 [7] -- L i 10
+    5 [8] -- O i 10
+    5 [9] -- N i 10
+    10 move_fim 15
+    15 * -- * d 16
+    16 colar 20
+    20 move_inicio_sub 25
+    25 procura_numero 30
+    30 + -- * d retorne
+    30 - -- * d retorne
+    30 x -- * d retorne
+    30 * -- * i 1
 fim
