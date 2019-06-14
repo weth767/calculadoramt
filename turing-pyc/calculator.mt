@@ -18,7 +18,8 @@ bloco main 1
     20 mult 30
 
     19 move_frente 21
-    21 _ -- - i 30
+    21 _ -- - i 22
+    22 apaga_i_ate_igual 30
 
     ; Transforma tudo para numero
     30 transforma_para_numero 31
@@ -917,4 +918,46 @@ bloco insere_depois_igual_sub 1
     30 - -- * d retorne
     30 x -- * d retorne
     30 * -- * i 1
+fim
+
+;Bloco para apagar os numeros entre o I e o =
+bloco apaga_i_ate_igual 1
+    1 move_inicio 5
+
+    5 I -- * d 10
+    5 * -- * d 5
+
+    10 = -- * i 15
+    10 * -- _ d 10
+
+    15 volta_numeros_ate_i 20
+
+    20 * -- * i retorne
+fim
+
+; Bloco para remover todos os espacos entre o I e os numeros do resultado
+bloco volta_numeros_ate_i 1
+    1 move_fim 2
+    2 * -- * d 3
+    3 * -- X i 4
+
+    4 = -- * i 5
+    4 * -- * e 4
+
+    5 copiar 6
+    6 * -- _ i 10
+
+    10 I -- * i 20
+    10 _ -- * e 10
+
+    20 colar 25
+    25 * -- * d 30
+    30 _ -- I d 35
+
+    35 _ -- * d 35
+    35 X -- _ i 40
+    35 * -- * i 5 
+
+    40 _ -- * e 40
+    40 I -- _ e retorne
 fim
