@@ -9,21 +9,29 @@ bloco main 1
     5 + -- * i 10
     5 - -- * i 15
     5 x -- * i 20
-    10 soma 30
-    15 identifica_maior 17
-    17 insere_primeiro_numero 25
-    25 move_inicio_sub 18
+    10 soma 50
+    15 identifica_maior 20
+    20 [=] -- * i 25
+    20 * -- * i 21
+    21 insere_primeiro_numero 25
+    25 move_inicio_sub 30
 
-    18 subtracao 19
-    20 mult 30
+    30 subtracao 31
+    20 mult 50
 
-    19 move_frente 21
-    21 _ -- - i 22
-    22 apaga_i_ate_igual 30
+    31 verifica_i_esquerda 32
+    32 I -- * i 33
+    32 _ -- * i 34
+    33 anda_ate_menos 35
+    34 anda_ate_menos 50
+
+    35 move_frente 40
+    40 _ -- - i 45
+    45 apaga_i_ate_igual 50
 
     ; Transforma tudo para numero
-    30 transforma_para_numero 31
-    31 * -- * i aceite
+    50 transforma_para_numero 55
+    55 * -- * i aceite
 fim
 
 bloco soma 1
@@ -449,26 +457,29 @@ fim
 ;############################ SUBNELSON ######################################################################
 
 bloco subtracao 1
-    1 move_inicio_sub 2
-    2 insere_depois_igual_sub 3
-    3 move_ate_igual 4
-    4 proximo_algarismo 5
-    5 copiar 6
-    6 transforma_numero_letra 7
-    7 move_fim 8
-    8 subtrai_numero 10
-    10 proximo_algarismo 11
-    11 - -- * i retorne
-    11 0 -- * i 5
-    11 1 -- * i 5
-    11 2 -- * i 5
-    11 3 -- * i 5
-    11 4 -- * i 5
-    11 5 -- * i 5
-    11 6 -- * i 5
-    11 7 -- * i 5
-    11 8 -- * i 5
-    11 9 -- * i 5
+    1 [=] -- * i 11
+    1 * -- * i 5
+    5 move_inicio_sub 10
+    10 insere_depois_igual_sub 15
+    11 insere_depois_igual 15
+    15 move_ate_igual 20
+    20 proximo_algarismo 25
+    25 copiar 30
+    30 transforma_numero_letra 35
+    35 move_fim 40
+    40 subtrai_numero 45
+    45 proximo_algarismo 50
+    50 - -- * i retorne
+    50 0 -- * i 25
+    50 1 -- * i 25
+    50 2 -- * i 25
+    50 3 -- * i 25
+    50 4 -- * i 25
+    50 5 -- * i 25
+    50 6 -- * i 25
+    50 7 -- * i 25
+    50 8 -- * i 25
+    50 9 -- * i 25
 fim
 
 bloco subtrai_numero 1
@@ -799,6 +810,7 @@ bloco identifica_maior 1
     9 7 -- L i 10
     9 8 -- O i 10
     9 9 -- N i 10
+    9 [=] -- * i 10
 
     10 = -- * d 11
     10 * -- * d 10
@@ -816,6 +828,12 @@ bloco identifica_maior 1
     12 [7] -- L i 15
     12 [8] -- O i 15
     12 [9] -- N i 15
+
+    12 [=] -- * d 16
+    ; 16 H --  * i retorne
+    16 * -- * i 17
+    17 apaga_depois_igual 18
+    18 * -- * i retorne
 
     15 * -- * i 6
 
@@ -960,4 +978,24 @@ bloco volta_numeros_ate_i 1
 
     40 _ -- * e 40
     40 I -- _ e retorne
+fim
+
+bloco apaga_depois_igual 1
+    1 move_fim 2
+    2 = -- * i 3
+    2 * -- _ e 2
+    3 move_inicio 4
+    4 transforma_para_numero 5
+    5 * -- * e retorne
+fim
+
+bloco verifica_i_esquerda 1
+    1 I -- * i retorne
+    1 _ -- * i retorne
+    1 * -- * e 1
+fim
+
+bloco anda_ate_menos 1
+    1 - -- * i retorne
+    1 * -- * d 1
 fim
