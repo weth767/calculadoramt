@@ -9,24 +9,37 @@ bloco main 1
     5 + -- * i 10
     5 - -- * i 15
     5 x -- * i 20
+    ;caso soma
     10 soma 50
+    ;caso subtracao necessario verificar qual o maior numero
     15 identifica_maior 20
+    ;se na segunda fita retornar = indica que o primerio numero e maior
     20 [=] -- * i 25
+    ;caso contrario indica que o segundo e maior
     20 * -- * i 21
+    ;insere primeiro numero apos o = 
     21 insere_primeiro_numero 25
+    ;move ate o Inicio (ou I)
     25 move_inicio_sub 30
-
+    ;Realiza subtracao a partir
     30 subtracao 31
     20 mult 50
-
+    
+    ;verifica se possui um I a esquerda
     31 verifica_i_esquerda 32
+    ;caso possua I indica que o segundo numero e negativo e deve ser colocado o sinal de -
     32 I -- * i 33
+    ;se nao existir indica que o primeiro numero e negatico
     32 _ -- * i 34
+    ;caminha ate o sinal de subtracao
     33 anda_ate_menos 35
     34 anda_ate_menos 50
 
+    ;caso necessario inserir o - move pra frente
     35 move_frente 40
+    ;insere o menos
     40 _ -- - i 45
+    ;apaga os numeros entre o I e o =
     45 apaga_i_ate_igual 50
 
     ; Transforma tudo para numero
@@ -34,6 +47,7 @@ bloco main 1
     55 * -- * i aceite
 fim
 
+; Bloco Responsavel por Realizar o loop de soma e marcar numeros somados
 bloco soma 1
     1 move_inicio 2
     2 insere_depois_igual 3
@@ -56,6 +70,8 @@ bloco soma 1
     11 8 -- * i 5
     11 9 -- * i 5
 fim
+
+;Bloco para somar 1 numero especfico
 
 bloco soma_numero 1
     ;verifica se na fita principal tem letra (indica que numero ja foi somado)
@@ -208,10 +224,7 @@ bloco soma_numero 1
 	202 * -- * i retorne
 fim
 
-;
-; TC+3S=9U
-;
-
+;Bloco para Realizar o vai 1 caso necessario na soma
 bloco soma_vai_um 1
 	1 = -- * i 5
 	1 0 -- 1 e retorne
@@ -230,22 +243,7 @@ bloco soma_vai_um 1
 
 fim
 
-bloco procura_algarismo_vai_um 1
-	
-	1 move_fim 2
-	2 0 -- * i retorne
-    2 1 -- * i retorne
-    2 2 -- * i retorne
-    2 3 -- * i retorne
-    2 4 -- * i retorne
-    2 5 -- * i retorne
-    2 6 -- * i retorne
-    2 7 -- * i retorne
-    2 8 -- * i retorne
-    2 9 -- * i retorne
-	2 * -- * e 2
-fim
-
+; bloco para mover numero apos o = para frente e deixar espaco em branco entre o numero e o =
 bloco move_frente 1
     1 move_fim 5
     5 = -- * d retorne
@@ -338,6 +336,7 @@ bloco move_frente 1
     120 * -- * e 120
 fim
 
+; bloco para transformar um numero em letra
 bloco transforma_numero_letra 1
     1 0 -- Z i retorne
     1 1 -- U i retorne
@@ -351,6 +350,7 @@ bloco transforma_numero_letra 1
     1 9 -- N i retorne
 fim
 
+;bloco para encontrar operação
 bloco encontra_operacao 1
     1 + -- * i retorne
     1 - -- * i retorne
@@ -358,27 +358,32 @@ bloco encontra_operacao 1
     1 * -- * d 1
 fim
 
+;bloco para mover ate o =
 bloco move_ate_igual 1
     1 = -- * i retorne
     1 * -- * d 1
 fim
 
+;bloco para mover ate o inicio
 bloco move_inicio 1
     1 _ -- * d retorne
     1 * -- * e 1
 fim
 
+;bloco para mover ate o inicio da operação inteira ou ate o I (indicador para subtracao negativa)
 bloco move_inicio_sub 1
     1 I -- * d retorne
     1 _ -- * d retorne
     1 * -- * e 1
 fim
 
+;bloco para mover ate o final da operação
 bloco move_fim 1
     1 _ -- * e retorne
     1 * -- * d 1
 fim
 
+;bloco para inserir o primeiro numero depois do =
 bloco insere_depois_igual 1
     1 copiar 5
     5 [0] -- Z i 10
@@ -402,6 +407,7 @@ bloco insere_depois_igual 1
     30 * -- * i 1
 fim
 
+;bloco para procurar o proximo numero da direita
 bloco procura_numero 1
     1 0  -- * i retorne
     1 1  -- * i retorne
@@ -419,6 +425,7 @@ bloco procura_numero 1
     1 *  -- * d 1
 fim
 
+;bloco para procurar o proximo numero da esquerda
 bloco proximo_algarismo 1
     1 = -- * e 5
     1 * -- * e 1
@@ -438,6 +445,7 @@ bloco proximo_algarismo 1
     5 * -- * e 5
 fim
 
+;bloco para transformar toda a operacao em numeros
 bloco transforma_para_numero 1	
 	1 move_inicio 2
 	2 Z -- 0 d 2
@@ -454,8 +462,11 @@ bloco transforma_para_numero 1
     2 * -- * d 2
 fim
 
-;############################ SUBNELSON ######################################################################
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Conjunto de Blocos para realizar subtracao
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;Bloco para realizar a subtracao inteira do numero (LOOP)
 bloco subtracao 1
     1 [=] -- * i 11
     1 * -- * i 5
@@ -482,6 +493,7 @@ bloco subtracao 1
     50 9 -- * i 25
 fim
 
+; Bloco para subtrair um numero especfico
 bloco subtrai_numero 1
     ;verifica se na fita principal tem letra (indica que numero ja foi subtraido)
     1 Z -- * e 1
@@ -633,6 +645,7 @@ bloco subtrai_numero 1
     202 * -- * i retorne
 fim
 
+; bloco Responsavel por pedir um numero emprestado no numero da esquerda
 bloco sub_pede_emprestado 1
 
     1 = -- * i retorne
@@ -740,6 +753,7 @@ bloco sub_pede_emprestado 1
     150 * -- * i retorne
 fim
 
+;bloco para procurar indicador minusculo a direita
 bloco procura_minusculo 1
     
     1 z -- * i retorne
@@ -756,6 +770,7 @@ bloco procura_minusculo 1
     1 * -- * d 1
 fim
 
+; bloco para trasnformar letra minuscula em numero
 bloco transforma_letra_minus_numero 1
     1 z -- 0 i retorne
     1 u -- 1 i retorne
@@ -769,6 +784,7 @@ bloco transforma_letra_minus_numero 1
     1 n -- 9 i retorne
 fim
 
+; bloco para pegar proximo_algarismo a direita
 bloco proximo_algarismo_direita 1
     1 = -- * i retorne
     1 0 -- * i retorne
@@ -785,6 +801,7 @@ bloco proximo_algarismo_direita 1
     1 * -- * d 1
 fim
 
+; Bloco para identificar qual o maior numero de uma subtracao (numero antes do - ou depois do -)
 bloco identifica_maior 1
 
     1 move_inicio_sub 2
@@ -884,6 +901,7 @@ bloco identifica_maior 1
     35 * -- * i 21
 fim
 
+;bloco para inserir o primeiro numero apos o =
 bloco insere_primeiro_numero 1
     
     ; Transforma tudo para numero
@@ -914,6 +932,8 @@ bloco insere_primeiro_numero 1
     30 * -- * i retorne
 
 fim
+
+;bloco para inserir o primeiro numero apos o = na subtracao
 
 bloco insere_depois_igual_sub 1
     1 copiar 5
@@ -980,6 +1000,7 @@ bloco volta_numeros_ate_i 1
     40 I -- _ e retorne
 fim
 
+; bloco para apagar todos caracteres apos o =
 bloco apaga_depois_igual 1
     1 move_fim 2
     2 = -- * i 3
@@ -988,13 +1009,15 @@ bloco apaga_depois_igual 1
     4 transforma_para_numero 5
     5 * -- * e retorne
 fim
-
+;bloco para verificar se existe letra I a esquerda
 bloco verifica_i_esquerda 1
     1 I -- * i retorne
+    ;se achar espaco em branco acabou a palavra
     1 _ -- * i retorne
     1 * -- * e 1
 fim
 
+; bloco para andar ate o sinal de -
 bloco anda_ate_menos 1
     1 - -- * i retorne
     1 * -- * d 1
