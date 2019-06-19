@@ -97,7 +97,7 @@ bloco soma_numero 1
     5 [0] -- * i 10
     5 [1] -- * i 20
     5 [2] -- * i 30
-    5 [3] -- * i 40
+    5 [3] -- * i 50
     5 [4] -- * i 50
     5 [5] -- * i 60
     5 [6] -- * i 70
@@ -266,11 +266,11 @@ bloco move_frente 1
     10 Q -- * i 35
     10 4 -- * i 36
     ;Caso for copiar o 5
-    10 C -- * i 40
-    10 5 -- * i 41
+    10 C -- * i 50
+    10 5 -- * i 51
     ;Caso for copiar o 6
-    10 S -- * i 45
-    10 6 -- * i 46
+    10 S -- * i 55
+    10 6 -- * i 56
     ;Caso for copiar o 7
     10 L -- * i 50
     10 7 -- * i 51
@@ -833,6 +833,8 @@ bloco identifica_maior 1
     10 * -- * d 10
 
     11 proximo_algarismo_direita 12
+
+    12 [=] -- * i 16 ; indica que os lenght sao iguais
     12 H -- * i 20 ; o segundo numero eh maior
 
     12 [0] -- Z i 15
@@ -846,11 +848,11 @@ bloco identifica_maior 1
     12 [8] -- O i 15
     12 [9] -- N i 15
 
-    12 [=] -- * d 16
-    ; 16 H --  * i retorne
-    16 * -- * i 17
-    17 apaga_depois_igual 18
-    18 * -- * i retorne
+    16 H -- * i 17
+    16 * -- * i 18
+    17 identifica_maior_length_igual 19
+    18 apaga_depois_igual 19
+    19 * -- * i retorne
 
     15 * -- * i 6
 
@@ -1021,4 +1023,176 @@ fim
 bloco anda_ate_menos 1
     1 - -- * i retorne
     1 * -- * d 1
+fim
+
+bloco identifica_maior_length_igual 1
+    1 move_inicio 2 ; move inicio
+    2 transforma_para_numero 3
+    3 _ -- * e 4 
+    4 H -- _ e 5
+    5 move_inicio 6
+    ;comeca a copiar numero para comparar
+    6 0 -- * i 10
+    6 1 -- * i 10
+    6 2 -- * i 10
+    6 3 -- * i 10
+    6 4 -- * i 10
+    6 5 -- * i 10
+    6 6 -- * i 10
+    6 7 -- * i 10
+    6 8 -- * i 10
+    6 9 -- * i 10
+    6 * -- * d 6
+    10 copiar 15
+    15 transforma_numero_letra 20
+    20 move_ate_igual 25
+    ;Pega numero
+    25 0 -- Z i 30 ; Ira comparar com 0
+    25 1 -- U i 31 ; Ira comparar com 1 
+    25 2 -- D i 32 ; Ira comparar com 2
+    25 3 -- T i 33 ; Ira comparar com 3
+    25 4 -- Q i 34 ; Ira comparar com 4
+    25 5 -- C i 35 ; Ira comparar com 5
+    25 6 -- S i 36 ; Ira comparar com 6
+    25 7 -- L i 37 ; Ira comparar com 7
+    25 8 -- O i 38 ; Ira comparar com 8
+    25 9 -- N i 39 ; Ira comparar com 9
+    25 _ -- * i 110 ; Caso onde os numeros sao iguais
+    25 * -- * d 25 
+
+    ;compara com 0
+    30 [0] -- * i 5
+    30 [1] -- * i 100
+    30 [2] -- * i 100
+    30 [3] -- * i 100 
+    30 [4] -- * i 100
+    30 [5] -- * i 100
+    30 [6] -- * i 100
+    30 [7] -- * i 100
+    30 [8] -- * i 100
+    30 [9] -- * i 100
+
+    ;compara com 1
+    31 [0] -- * i 105
+    31 [1] -- * i 5
+    31 [2] -- * i 100
+    31 [3] -- * i 100 
+    31 [4] -- * i 100
+    31 [5] -- * i 100
+    31 [6] -- * i 100
+    31 [7] -- * i 100
+    31 [8] -- * i 100
+    31 [9] -- * i 100
+
+    ;compara com 2
+    32 [0] -- * i 105
+    32 [1] -- * i 105
+    32 [2] -- * i 5
+    32 [3] -- * i 100 
+    32 [4] -- * i 100
+    32 [5] -- * i 100
+    32 [6] -- * i 100
+    32 [7] -- * i 100
+    32 [8] -- * i 100
+    32 [9] -- * i 100
+
+    ;compara com 3
+    33 [0] -- * i 105
+    33 [1] -- * i 105
+    33 [2] -- * i 105
+    33 [3] -- * i 5 
+    33 [4] -- * i 100
+    33 [5] -- * i 100
+    33 [6] -- * i 100
+    33 [7] -- * i 100
+    33 [8] -- * i 100
+    33 [9] -- * i 100
+
+    ;compara com 4
+    34 [0] -- * i 105
+    34 [1] -- * i 105
+    34 [2] -- * i 105
+    34 [3] -- * i 105 
+    34 [4] -- * i 5
+    34 [5] -- * i 100
+    34 [6] -- * i 100
+    34 [7] -- * i 100
+    34 [8] -- * i 100
+    34 [9] -- * i 100
+
+    ;compara com 5
+    35 [0] -- * i 105
+    35 [1] -- * i 105
+    35 [2] -- * i 105
+    35 [3] -- * i 105 
+    35 [4] -- * i 105
+    35 [5] -- * i 5
+    35 [6] -- * i 100
+    35 [7] -- * i 100
+    35 [8] -- * i 100
+    35 [9] -- * i 100
+
+    ;compara com 6
+    36 [0] -- * i 105
+    36 [1] -- * i 105
+    36 [2] -- * i 105
+    36 [3] -- * i 105 
+    36 [4] -- * i 105
+    36 [5] -- * i 105
+    36 [6] -- * i 5
+    36 [7] -- * i 100
+    36 [8] -- * i 100
+    36 [9] -- * i 100
+
+    ;compara com 7
+    37 [0] -- * i 105
+    37 [1] -- * i 105
+    37 [2] -- * i 105
+    37 [3] -- * i 105 
+    37 [4] -- * i 105
+    37 [5] -- * i 105
+    37 [6] -- * i 105
+    37 [7] -- * i 5
+    37 [8] -- * i 100
+    37 [9] -- * i 100
+
+    ;compara com 8
+    38 [0] -- * i 105
+    38 [1] -- * i 105
+    38 [2] -- * i 105
+    38 [3] -- * i 105 
+    38 [4] -- * i 105
+    38 [5] -- * i 105
+    38 [6] -- * i 105
+    38 [7] -- * i 105
+    38 [8] -- * i 5
+    38 [9] -- * i 100
+
+    ;compara com 9
+    39 [0] -- * i 105
+    39 [1] -- * i 105
+    39 [2] -- * i 105
+    39 [3] -- * i 105 
+    39 [4] -- * i 105
+    39 [5] -- * i 105
+    39 [6] -- * i 105
+    39 [7] -- * i 105
+    39 [8] -- * i 105
+    39 [9] -- * i 5
+
+    100 gravar = 101 ;caso onde o primeiro numero eh maior, grava o = indicando isso
+    101 apaga_depois_igual 102
+    102 transforma_para_numero 103
+    103 = -- * i retorne ;retorna
+    103 * -- * e 103
+
+    105 * -- * i retorne ;caso onde o segundo numero eh maior
+
+    110 * -- * e 111 ;caso onde o segundo numero eh maior
+    111 gravar = 112 ;caso onde o primeiro numero eh maior, grava o = indicando isso
+    112 apaga_depois_igual 113
+    113 transforma_para_numero 114
+    114 = -- * i retorne ;retorna
+    114 * -- * e 114
+
 fim
