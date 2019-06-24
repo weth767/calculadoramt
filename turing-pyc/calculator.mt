@@ -8,7 +8,7 @@ bloco main 1
     1 encontra_operacao 5
     5 + -- * i 10
     5 - -- * i 15
-    5 x -- * i 20
+    5 x -- * i 100
     ;caso soma
     10 soma 50
     ;caso subtracao necessario verificar qual o maior numero
@@ -23,13 +23,12 @@ bloco main 1
     25 move_inicio_sub 30
     ;Realiza subtracao a partir
     30 subtracao 31
-    20 mult 50
     
     ;verifica se possui um I a esquerda
     31 verifica_i_esquerda 32
     ;caso possua I indica que o segundo numero e negativo e deve ser colocado o sinal de -
     32 I -- * i 33
-    ;se nao existir indica que o primeiro numero e negatico
+    ;se nao existir indica que o primeiro numero e negativo
     32 _ -- * i 34
     ;caminha ate o sinal de subtracao
     33 anda_ate_menos 35
@@ -41,6 +40,8 @@ bloco main 1
     40 _ -- - i 45
     ;apaga os numeros entre o I e o =
     45 apaga_i_ate_igual 50
+
+    100 mult 50
 
     ; Transforma tudo para numero
     50 transforma_para_numero 55
@@ -422,6 +423,7 @@ bloco procura_numero 1
     1 +  -- * i retorne
     1 -  -- * i retorne
     1 x  -- * i retorne
+    1 =  -- * i retorne
     1 *  -- * d 1
 fim
 
@@ -1195,4 +1197,241 @@ bloco identifica_maior_length_igual 1
     114 = -- * i retorne ;retorna
     114 * -- * e 114
 
+fim
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Conjunto de Blocos para realizar multiplicacao
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+bloco mult 1
+    1 move_inicio 2
+    2 x -- * d 5
+    2 * -- * d 2
+    5 insere_segundo_depois_igual 10
+    ;coloca marcador no inicio
+    10 move_inicio 15
+    15 * -- * e 20
+    20 _ -- Y d 25
+    25 insere_primeiro_inicio 30
+    30 sub_mult 31
+    31 move_fim 32
+    32 * -- * d 33
+    33 _ -- - d 34
+    34 _ -- 1 d 35
+    35 _ -- = i 40
+
+    ; realiza a subtracao da iteracao
+    40 gravar = 45
+    45 # -- * d 50
+    45 * -- * e 45
+    50 ! -- _ d 55
+    55 subtracao 60
+
+    ;volta o !
+    60 _ -- ! i 65
+    60 * -- * e 60
+
+    ; transforma o resultado da subtracao em numero
+    65 move_fim 70
+    70 = -- * i 75
+    70 Z -- 0 e 70
+    70 U -- 1 e 70
+    70 D -- 2 e 70
+    70 T -- 3 e 70
+    70 Q -- 4 e 70
+    70 C -- 5 e 70
+    70 S -- 6 e 70
+    70 L -- 7 e 70
+    70 O -- 8 e 70
+    70 N -- 9 e 70
+    70 * -- * e 70
+
+    ; transforma o que esta antes do Y em _
+    75 move_inicio 80
+    80 Y -- * i 85
+    80 * -- _ d 80
+
+    ; pega o resultado da subtracao e coloca no inicio
+    85 copia_ultimo_numero_inicio_mult 90
+
+    ; apaga tudo ate o #
+    90 # -- _ e 95
+    90 * -- _ e 90
+
+    ; transforma o segundo numero, de letra para numero
+    95 = -- * e 100
+    95 * -- * e 95
+
+    100 x -- + i 105
+    100 Z -- 0 e 100
+    100 U -- 1 e 100
+    100 D -- 2 e 100
+    100 T -- 3 e 100
+    100 Q -- 4 e 100
+    100 C -- 5 e 100
+    100 S -- 6 e 100
+    100 L -- 7 e 100
+    100 O -- 8 e 100
+    100 N -- 9 e 100
+    100 * -- * e 100
+
+    105 soma_mult 110
+
+    ;50 proximo_algarismo 55
+    ;50 x -- * i retorne
+    ;50 0 -- * i 20
+    ;50 1 -- * i 20
+    ;50 2 -- * i 20
+    ;50 3 -- * i 20
+    ;50 4 -- * i 20
+    ;50 5 -- * i 20
+    ;50 6 -- * i 20
+    ;50 7 -- * i 20
+    ;50 8 -- * i 20
+    ;50 9 -- * i 20
+fim
+
+;bloco para inserir o segundo numero depois do =
+bloco insere_segundo_depois_igual 1
+    1 copiar 5
+    5 [0] -- Z i 10
+    5 [1] -- U i 10
+    5 [2] -- D i 10
+    5 [3] -- T i 10
+    5 [4] -- Q i 10
+    5 [5] -- C i 10
+    5 [6] -- S i 10
+    5 [7] -- L i 10
+    5 [8] -- O i 10
+    5 [9] -- N i 10
+    10 move_fim 15
+    15 * -- * d 16
+    16 colar 20
+    20 x -- * d 25
+    20 * -- * e 20
+    25 procura_numero 30
+    30 = -- * i retorne
+    30 * -- * i 1
+fim
+
+bloco insere_primeiro_inicio 1
+	
+	1 x -- * i 5
+	1 * -- * d 1
+	5 proximo_algarismo_mult 10
+	10 Y -- * i retorne
+
+	10 copiar 15
+    15 [0] -- Z i 20
+    15 [1] -- U i 20
+    15 [2] -- D i 20
+    15 [3] -- T i 20
+    15 [4] -- Q i 20
+    15 [5] -- C i 20
+    15 [6] -- S i 20
+    15 [7] -- L i 20
+    15 [8] -- O i 20
+    15 [9] -- N i 20
+
+    20 move_inicio 21
+    21 * -- * e 22
+    22 colar 25
+
+    25 Y -- * i 1
+    25 * -- * d 25
+fim
+
+;bloco para procurar o proximo numero da esquerda na multiplicacao
+bloco proximo_algarismo_mult 1
+    1 x -- * e 5
+    1 * -- * e 1
+    5 0 -- * i retorne
+    5 1 -- * i retorne
+    5 2 -- * i retorne
+    5 3 -- * i retorne
+    5 4 -- * i retorne
+    5 5 -- * i retorne
+    5 6 -- * i retorne
+    5 7 -- * i retorne
+    5 8 -- * i retorne
+    5 9 -- * i retorne
+    5 Y -- * i retorne
+    5 * -- * e 5
+fim
+
+;bloco para decrementar a iteracao da multiplicacao
+bloco sub_mult 1
+	; coloca o #
+	1 move_fim 5
+	5 * -- * d 10
+	10 _ -- # d 11
+	11 _ -- ! i 15
+
+	; copia o primeiro numero pro final
+	15 move_inicio 20
+	20 procura_numero_mult 25
+	25 Y -- * i retorne
+	25 copiar 30
+	30 [0] -- Z i 35
+    30 [1] -- U i 35
+    30 [2] -- D i 35
+    30 [3] -- T i 35
+    30 [4] -- Q i 35
+    30 [5] -- C i 35
+    30 [6] -- S i 35
+    30 [7] -- L i 35
+    30 [8] -- O i 35
+    30 [9] -- N i 35
+	35 move_fim 40
+	40 * -- * d 45
+	45 colar 15
+fim
+
+;bloco para procurar o proximo numero da direita ate o Y
+bloco procura_numero_mult 1
+    1 0  -- * i retorne
+    1 1  -- * i retorne
+    1 2  -- * i retorne
+    1 3  -- * i retorne
+    1 4  -- * i retorne
+    1 5  -- * i retorne
+    1 6  -- * i retorne
+    1 7  -- * i retorne
+    1 8  -- * i retorne
+    1 9  -- * i retorne
+    1 Y  -- * i retorne
+    1 *  -- * d 1
+fim
+
+bloco copia_ultimo_numero_inicio_mult 1
+	1 move_fim 5
+	5 = -- * i retorne
+	5 copiar 10
+	10 * -- _ e 15
+
+	15 move_inicio 20
+	20 * -- * e 25
+	25 colar 1
+fim
+
+; Bloco Responsavel por Realizar o loop de soma e marcar numeros somados da multiplicacao
+bloco soma_mult 1
+	1 = -- * e 5
+    1 * -- * d 1
+    5 copiar 6
+    6 transforma_numero_letra 7
+    7 move_fim 8
+    8 soma_numero 10
+    10 proximo_algarismo 11
+    11 + -- * i retorne
+    11 0 -- * i 5
+    11 1 -- * i 5
+    11 2 -- * i 5
+    11 3 -- * i 5
+    11 4 -- * i 5
+    11 5 -- * i 5
+    11 6 -- * i 5
+    11 7 -- * i 5
+    11 8 -- * i 5
+    11 9 -- * i 5
 fim
