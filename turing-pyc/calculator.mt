@@ -98,7 +98,7 @@ bloco soma_numero 1
     5 [0] -- * i 10
     5 [1] -- * i 20
     5 [2] -- * i 30
-    5 [3] -- * i 50
+    5 [3] -- * i 40
     5 [4] -- * i 50
     5 [5] -- * i 60
     5 [6] -- * i 70
@@ -267,11 +267,11 @@ bloco move_frente 1
     10 Q -- * i 35
     10 4 -- * i 36
     ;Caso for copiar o 5
-    10 C -- * i 50
-    10 5 -- * i 51
+    10 C -- * i 40
+    10 5 -- * i 41
     ;Caso for copiar o 6
-    10 S -- * i 55
-    10 6 -- * i 56
+    10 S -- * i 45
+    10 6 -- * i 46
     ;Caso for copiar o 7
     10 L -- * i 50
     10 7 -- * i 51
@@ -279,59 +279,61 @@ bloco move_frente 1
     10 O -- * i 55
     10 8 -- * i 56
     ;Caso for copiar o 9
-    10 N -- * i 60
-    10 9 -- * i 61
+    10 N -- * i 65
+    10 9 -- * i 66
+
     ;Insere Marca para facilitar a copia
-    15 * -- X d 65
-    16 * -- X d 66
+    15 * -- X d 17
+    16 * -- X d 18
     ;Realiza copia do 0
-    65 * -- Z i 120
-    66 * -- 0 i 120
+    17 * -- Z i 120
+    18 * -- 0 i 120
+
     ;Repete procedimento para todos os demais numeros (IGUAL O 0)
-    20 * -- X d 70
-    21 * -- X d 71
-    70 * -- U i 120
-    71 * -- 1 i 120
+    20 * -- X d 22
+    21 * -- X d	23
+    22 * -- U i 120
+   	23 * -- 1 i 120
     
-    25 * -- X d 75
-    26 * -- X d 76
-    75 * -- D i 120
-    76 * -- 2 i 120
+    25 * -- X d 26
+    26 * -- X d 27
+    26 * -- D i 120
+    27 * -- 2 i 120
 
-    30 * -- X d 80
-    31 * -- X d 81
-    80 * -- T i 120
-    81 * -- 3 i 120
+    30 * -- X d 32
+    31 * -- X d 33
+    32 * -- T i 120
+    33 * -- 3 i 120
 
-    35 * -- X d 85
-    36 * -- X d 86
-    85 * -- Q i 120
-    86 * -- 4 i 120
+    35 * -- X d 37
+    36 * -- X d 38
+    37 * -- Q i 120
+    38 * -- 4 i 120
 
-    40 * -- X d 90
-    41 * -- X d 91
-    90 * -- C i 120
-    91 * -- 5 i 120
+    40 * -- X d 42
+    41 * -- X d 43
+    42 * -- C i 120
+    43 * -- 5 i 120
 
-    45 * -- X d 95
-    46 * -- X d 96
-    95 * -- S i 120
-    96 * -- 6 i 120
+    45 * -- X d 47
+    46 * -- X d 48
+    47 * -- S i 120
+    48 * -- 6 i 120
 
-    50 * -- X d 100
-    51 * -- X d 101
-    100 * -- L i 120
-    101 * -- 7 i 120
+    50 * -- X d 52
+    51 * -- X d 53
+    52 * -- L i 120
+    53 * -- 7 i 120
 
-    55 * -- X d 105
-    56 * -- X d 106
-    105 * -- O i 120
-    106 * -- 8 i 120
+    55 * -- X d 57
+    56 * -- X d 58
+    57 * -- O i 120
+    58 * -- 8 i 120
 
-    60 * -- X d 110
-    61 * -- X d 111
-    110 * -- N i 120
-    111 * -- 9 i 120
+    60 * -- X d 62
+    61 * -- X d 63
+    62 * -- N i 120
+    63 * -- 9 i 120
     
     120 X -- _ e 5
     120 * -- * e 120
@@ -1204,9 +1206,18 @@ fim
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 bloco mult 1
-    1 move_inicio 2
-    2 x -- * d 5
-    2 * -- * d 2
+	1 verifica_mult_zero_um 2
+	; quando multiplica por 0
+	2 [0] -- * i 200
+	; quando multiplica por 1, sendo o primeiro valor o numero 1
+	2 [1] -- * i 300
+	; quando multiplica por 1, sendo o segundo valor o numero 1
+	2 [2] -- * i 400
+	2 [*] -- * i 3
+
+    3 move_inicio 4
+    4 x -- * d 5
+    4 * -- * d 4
     5 insere_segundo_depois_igual 10
     ;coloca marcador no inicio
     10 move_inicio 15
@@ -1263,6 +1274,7 @@ bloco mult 1
     95 * -- * e 95
 
     100 x -- + i 105
+    100 + -- * i 105
     100 Z -- 0 e 100
     100 U -- 1 e 100
     100 D -- 2 e 100
@@ -1277,18 +1289,65 @@ bloco mult 1
 
     105 soma_mult 110
 
-    ;50 proximo_algarismo 55
-    ;50 x -- * i retorne
-    ;50 0 -- * i 20
-    ;50 1 -- * i 20
-    ;50 2 -- * i 20
-    ;50 3 -- * i 20
-    ;50 4 -- * i 20
-    ;50 5 -- * i 20
-    ;50 6 -- * i 20
-    ;50 7 -- * i 20
-    ;50 8 -- * i 20
-    ;50 9 -- * i 20
+    ; verifica se as iteracoes chegaram a 0
+    110 Y -- * e 115
+    110 * -- * e 110
+
+    115 1 -- * e 116
+    115 * -- * i 117
+    116 0 -- * e 116
+    116 _ -- * i 130 ; termina a multiplicacao
+    116 * -- * i 117
+
+    ; terminou a multiplicacao, agora eh refinar o resultado
+    130 Y -- _ d 135
+    130 * -- _ d 130
+    135 + -- x i retorne
+    135 * -- * d 135
+
+    117 move_fim 120
+
+    120 = -- * i 125
+    120 Z -- 0 e 120
+    120 U -- 1 e 120
+    120 D -- 2 e 120
+    120 T -- 3 e 120
+    120 Q -- 4 e 120
+    120 C -- 5 e 120
+    120 S -- 6 e 120
+    120 L -- 7 e 120
+    120 O -- 8 e 120
+    120 N -- 9 e 120
+    120 * -- * e 120
+
+    125 Y -- * i 30
+    125 * -- * e 125
+
+    ; Caso for multiplicado por 0
+    200 = -- * d 205
+    200 * -- * d 200
+    205 _ -- 0 i retorne
+
+	; quando multiplica por 1, sendo o primeiro valor o numero 1
+	300 x -- * d 305
+	300 * -- * e 300
+	305 procura_numero 310
+	310 = -- * i retorne
+	310 copiar 311
+	311 transforma_numero_letra 315
+	315 move_fim 320
+	320 * -- * d 325
+	325 colar 300
+
+	; quando multiplica por 1, sendo o segundo valor o numero 1
+	400 move_inicio 405
+	405 procura_numero 410
+	410 x -- * i retorne
+	410 copiar 411
+	411 transforma_numero_letra 415
+	415 move_fim 420
+	420 * -- * d 425
+	425 colar 400
 fim
 
 ;bloco para inserir o segundo numero depois do =
@@ -1434,4 +1493,42 @@ bloco soma_mult 1
     11 7 -- * i 5
     11 8 -- * i 5
     11 9 -- * i 5
+fim
+
+; se estiver multiplicando um numero por 0, a resposta e 0
+; se estiver multiplicando um numero por 1, a resposta e o outro numero
+bloco verifica_mult_zero_um 1
+
+	; primeiro numero eh 0
+	1 move_inicio 2
+	2 0 -- * i 3
+	;2 1 -- * i 20
+	2 * -- * i 10
+	3 gravar 0 4
+	4 * -- * i retorne
+
+	; segundo numero eh 0
+	10 x -- * d 15
+	10 * -- * d 10
+	15 0 -- * i 3
+	15 * -- * i 16
+	16 move_inicio 20
+
+	; primeiro numero eh 1
+	20 1 -- * d 25
+	20 * -- * i 40
+	25 x -- * i 30
+	25 * -- * i 40
+	30 gravar 1 35
+	35 * -- * i retorne
+
+	; segundo numero eh 1
+	40 x -- * d 45
+	40 * -- * d 40
+	45 1 -- * d 50
+	45 * -- * i retorne
+	50 = -- * i 55
+	50 * -- * i retorne
+	55 gravar 2 60
+	60 * -- * i retorne
 fim
