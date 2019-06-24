@@ -872,11 +872,16 @@ bloco identifica_maior 1
     20 [8] -- O i 21
     20 [9] -- N i 21
 
-    21 proximo_algarismo 22
-    22 - -- * i retorne
-    22 * -- * i 23
 
-    23 copiar 25
+    21 - -- * i 22
+    21 * -- * e 21 
+    22 proximo_algarismo_direita 23
+
+    23 - -- * i retorne
+    23 = -- * i retorne
+    23 * -- * i 24
+
+    24 copiar 25
 
     25 0 -- Z i 30
     25 1 -- U i 30
