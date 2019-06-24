@@ -279,8 +279,8 @@ bloco move_frente 1
     10 O -- * i 55
     10 8 -- * i 56
     ;Caso for copiar o 9
-    10 N -- * i 65
-    10 9 -- * i 66
+    10 N -- * i 60
+    10 9 -- * i 61
 
     ;Insere Marca para facilitar a copia
     15 * -- X d 17
