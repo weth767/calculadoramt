@@ -247,96 +247,54 @@ fim
 ; bloco para mover numero apos o = para frente e deixar espaco em branco entre o numero e o =
 bloco move_frente 1
     1 move_fim 5
-    5 = -- * d retorne
-    5 _ -- * e 10
-    5 X -- * e 5
-    5 * -- * i 10
-    ;Caso for copiar o 0
-    10 Z -- * i 15
-    10 0 -- * i 16
-    ;Caso for copiar o 1
-    10 U -- * i 20
-    10 1 -- * i 21
-    ;Caso for copiar o 2
-    10 D -- * i 25
-    10 2 -- * i 26
-    ;Caso for copiar o 3
-    10 T -- * i 30
-    10 3 -- * i 31
-    ;Caso for copiar o 4
-    10 Q -- * i 35
-    10 4 -- * i 36
-    ;Caso for copiar o 5
-    10 C -- * i 40
-    10 5 -- * i 41
-    ;Caso for copiar o 6
-    10 S -- * i 45
-    10 6 -- * i 46
-    ;Caso for copiar o 7
-    10 L -- * i 50
-    10 7 -- * i 51
-    ;Caso for copiar o 8
-    10 O -- * i 55
-    10 8 -- * i 56
-    ;Caso for copiar o 9
-    10 N -- * i 60
-    10 9 -- * i 61
+    5 0 -- X d 100
+    5 Z -- X d 105
+    5 1 -- X d 110
+    5 U -- X d 115
+    5 2 -- X d 120
+    5 D -- X d 125
+    5 3 -- X d 130
+    5 T -- X d 135
+    5 4 -- X d 140
+    5 Q -- X d 145
+    5 5 -- X d 150
+    5 C -- X d 155
+    5 6 -- X d 160
+    5 S -- X d 165
+    5 7 -- X d 170
+    5 L -- X d 175
+    5 8 -- X d 180
+    5 O -- X d 185
+    5 9 -- X d 190
+    5 N -- X d 195
 
-    ;Insere Marca para facilitar a copia
-    15 * -- X d 17
-    16 * -- X d 18
-    ;Realiza copia do 0
-    17 * -- Z i 120
-    18 * -- 0 i 120
+    100 * -- 0 i 200
+    105 * -- Z i 200
+    110 * -- 1 i 200
+    115 * -- U i 200
+    120 * -- 2 i 200
+    125 * -- D i 200
+    130 * -- 3 i 200
+    135 * -- T i 200
+    140 * -- 4 i 200
+    145 * -- Q i 200
+    150 * -- 5 i 200
+    155 * -- C i 200
+    160 * -- 6 i 200
+    165 * -- S i 200
+    170 * -- 7 i 200
+    175 * -- L i 200
+    180 * -- 8 i 200
+    185 * -- O i 200
+    190 * -- 9 i 200
+    195 * -- N i 200
 
-    ;Repete procedimento para todos os demais numeros (IGUAL O 0)
-    20 * -- X d 22
-    21 * -- X d	23
-    22 * -- U i 120
-   	23 * -- 1 i 120
-    
-    25 * -- X d 26
-    26 * -- X d 27
-    26 * -- D i 120
-    27 * -- 2 i 120
-
-    30 * -- X d 32
-    31 * -- X d 33
-    32 * -- T i 120
-    33 * -- 3 i 120
-
-    35 * -- X d 37
-    36 * -- X d 38
-    37 * -- Q i 120
-    38 * -- 4 i 120
-
-    40 * -- X d 42
-    41 * -- X d 43
-    42 * -- C i 120
-    43 * -- 5 i 120
-
-    45 * -- X d 47
-    46 * -- X d 48
-    47 * -- S i 120
-    48 * -- 6 i 120
-
-    50 * -- X d 52
-    51 * -- X d 53
-    52 * -- L i 120
-    53 * -- 7 i 120
-
-    55 * -- X d 57
-    56 * -- X d 58
-    57 * -- O i 120
-    58 * -- 8 i 120
-
-    60 * -- X d 62
-    61 * -- X d 63
-    62 * -- N i 120
-    63 * -- 9 i 120
-    
-    120 X -- _ e 5
-    120 * -- * e 120
+    200 X -- * e 205
+    200 * -- * e 200
+    205 = -- * d 210
+    205 * -- * i 5
+    210 X -- _ i retorne
+        
 fim
 
 ; bloco para transformar um numero em letra
